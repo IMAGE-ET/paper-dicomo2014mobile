@@ -1,3 +1,20 @@
+# Makefile for paper with Markdown
+#
+# * Time-stamp: "2014-03-25 18:10:01 nomura"
+#
+# requires:
+# * Cygwin texlive packages
+#     - texlive
+#     - texlive-collection-basic
+#     - texlive-collection-bibtexextra
+#     - texlive-collection-langcjk
+#     - texlive-collection-latex
+#     - texlive-collection-latexextra
+#     - texlive-collection-latexrecommended
+#     - texlive-collection-pictures
+# * Ruby gem
+#     - kramdown
+
 .SUFFIXES: .tex .md .pdf .bib .dvi .bib
 
 TARGET=paper
@@ -16,6 +33,9 @@ LATEX=platex
 	if [ ! -s $@ ]; then rm -fv $@ && false; fi
 	$(CONVPUNC) $@
 
+.dvi.pdf:
+	$(DVI2PDF) $*
+
 all:\
 	$(TARGET).pdf
 
@@ -27,9 +47,6 @@ clean:
 	rm -vf *.out
 	rm -vf *.log
 #	rm -v *.pdf
-
-$(TARGET).pdf: $(TARGET).dvi
-	$(DVI2PDF) -l $(TARGET)
 
 $(TARGET).dvi:	$(TARGET).tex $(TEXFILES) $(FIGFILES) $(BIBFILES)
 	$(LATEX) $(TARGET).tex
