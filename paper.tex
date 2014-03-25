@@ -1,0 +1,48 @@
+\documentclass[a4paper]{ipsjpapers}
+%\documentclass[a4j,twocolumn]{jarticle}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+%\checklines	% 行送りを確認する時に使用
+\begin{document}
+
+% 和文表題
+\title{DFDを用いた大規模イベントデータの分析支援環境}
+% 英文表題
+\etitle{Massive event data analysis and processing service \\
+development environment using DFD}
+% 所属ラベルの定義
+\affilabel{FJ}{富士通研究所　ソフトウェアイノベーション研究部\\
+	Software Innovation Lab., Fujitsu Laboratories Ltd.}
+% 和文著者名
+\author{野村 佳秀\affiref{FJ}\and
+	木村 功作\affiref{FJ}\and
+	栗原 英俊\affiref{FJ}\and
+	山本 里枝子\affiref{FJ}\and
+	山本 晃治\affiref{FJ}\and
+	徳本 晋\affiref{FJ}}
+	
+% 英文著者名
+\eauthor{Yoshihide Nomura\affiref{FJ}\and
+	Kosaku Kimura\affiref{FJ}\and
+	Hidetoshi Kurihara\affiref{FJ}\and
+	Rieko Yamamoto\affiref{FJ}\and
+	Kouji Yamamoto\affiref{FJ}\and
+	Susumu Tokumoto\affiref{FJ}}
+
+% 和文概要
+\begin{abstract}
+\include{src/abstract}
+\end{abstract}
+% 英文概要
+\begin{eabstract}
+\include{src/eabstract}
+\end{eabstract}
+
+% 表題などの出力
+\maketitle
+
+\include{src/intro}
+\include{src/architecture}
+\end{document}
