@@ -1,11 +1,12 @@
 # 利用方法
 
-図{::nomarkdown}\ref{fig:home}{:/nomarkdown}が
+図{::nomarkdown}\ref{fig:home}{:/}が
 ホーム画面である。
 
 {::nomarkdown}
-\begin{figure}
-\includegraphics[width=8cm]{figure/home.png}
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{figure/home.png}
 \caption{ホーム画面}
 \label{fig:home}
 \end{figure}
@@ -25,3 +26,17 @@
 となっている。
 
 ## Program
+
+図{::nomarkdown}\ref{fig:program}{:/}
+がプログラムの画面である。
+
+{::nomarkdown}
+\begin{figure}[h]
+\centering
+\includegraphics[width=7cm]{figure/program.png}
+\caption{プログラム画面}
+\label{fig:program}
+\end{figure}
+{:/nomarkdown}
+
+日毎のセッションが時間軸上に
