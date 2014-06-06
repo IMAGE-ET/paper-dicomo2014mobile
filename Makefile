@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-03-25 18:10:01 nomura"
+# * Time-stamp: "2014-06-06 15:48:27 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -18,15 +18,16 @@
 .SUFFIXES: .tex .md .pdf .bib .dvi .bib
 
 TARGET=paper
-TEXFILES=src/intro.tex\
-	src/abstract.tex\
-	src/eabstract.tex
+TEXFILES=src/abstract.tex\
+	src/intro.tex\
+	src/manual.tex\
+	src/architecture.tex
 FIGFILES=
 BIBFILES=biblist.bib
 MD2TEX=cmd /c kramdown -o latex
 CONVPUNC=sed -i -e 's/、/，/g' -e 's/。/．/g'
 DVI2PDF=dvipdfmx -l
-LATEX=platex
+LATEX=platex -shell-escape
 
 .md.tex:
 	$(MD2TEX) $< > $@
@@ -48,6 +49,14 @@ clean:
 	rm -vf *.log
 #	rm -v *.pdf
 
-$(TARGET).dvi:	$(TARGET).tex $(TEXFILES) $(FIGFILES) $(BIBFILES)
+$(TARGET).bbl: $(TARGET).tex $(BIBFILES) $(TEXFILES)
+	rm -vf *.aux
+	rm -vf src/*.aux
+	rm -vf *.bbl
+	$(LATEX) $(TARGET).tex
+	bibtex $(TARGET)
+
+#$(TARGET).dvi:	$(TARGET).tex $(TARGET).bbl $(TEXFILES) $(FIGFILES)
+$(TARGET).dvi:	$(TARGET).tex $(TEXFILES) $(FIGFILES)
 	$(LATEX) $(TARGET).tex
 	$(LATEX) $(TARGET).tex

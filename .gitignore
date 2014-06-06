@@ -3,5 +3,8 @@
 /*.out
 /*.dvi
 /*.pdf
+/*.blg
+/*.bbl
 /src/*.aux
 /src/*.tex
+/src/*~
