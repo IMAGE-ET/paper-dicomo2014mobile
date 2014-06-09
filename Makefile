@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-06-06 15:48:27 nomura"
+# * Time-stamp: "2014-06-09 16:24:30 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -22,7 +22,16 @@ TEXFILES=src/abstract.tex\
 	src/intro.tex\
 	src/manual.tex\
 	src/architecture.tex
-FIGFILES=
+FIGFILES=figure/access.png\
+	figure/architecture.eps\
+	figure/home.png\
+	figure/layouts.eps\
+	figure/people.png\
+	figure/people-sample.png\
+	figure/program.png\
+	figure/qrcode.png\
+	figure/sessions.png\
+	figure/session-sample.png
 BIBFILES=biblist.bib
 MD2TEX=cmd /c kramdown -o latex
 CONVPUNC=sed -i -e 's/、/，/g' -e 's/。/．/g'

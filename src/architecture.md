@@ -4,26 +4,147 @@ WebサイトはJekyll[^jekyll]
 を用いて静的に生成し、画面の要素の描画やインタラクションには主に
 jQuery Mobile[^jquerymobile]
 を用いている。
+また、オフライン時のページのキャッシュやお気に入りの保存には
+HTML5[^html5]で規定されたAPIを利用している。
 
 [^jekyll]: http://jekyllrb.com
 [^jquerymobile]: http://jquerymobile.com/
+[^html5]: http://www.w3.org/TR/html5/
 
 全体の構成は図
 {::nomarkdown}\ref{fig:architecture}{:/}
 の通りである。
 
 {::nomarkdown}
-\begin{figure}
+\begin{figure}[t]
+\centering
 \includegraphics[width=8cm]{figure/architecture.eps}
 \caption{全体の構成}
 \label{fig:architecture}
 \end{figure}
 {:/nomarkdown}
 
+テンプレートを含むWebサイトのソースはGitリポジトリ上に格納され、
+これを元にJekyllが静的HTMLでできた静的サイトを生成する。
+ユーザのスマート端末からはこの静的HTMLをダウンロードし表示する。
+
 DICOMO2014では、コンテンツ変換、静的HTMLのホスティングの手間を軽減するため、
 GitHub Pages[^pages]
 を用いた。
-GitHub Pagesは、Jekyllに対応したコンテンツをGitリポジトリに
+GitHub Pagesは、Jekyllに対応したコンテンツをGitHub上のGitリポジトリに
 pushすると、静的HTMLを生成してホスティングするサービスである。
 
-[^pages]: "GitHub Pages" https://pages.github.com
+[^pages]: https://pages.github.com
+
+## リポジトリ
+
+ソースのリポジトリは大きく以下のフォルダから構成されている。
+
+**シンポジウムに依存しない共通のテンプレート部分：**
+
+- `_includes` - 複数のページから利用されるHTMLを部品化したファイル。
+- `_layouts` - ページの種類に応じたレイアウトファイル。
+  主に５種類ある。詳細は後述。
+- `_scripts` - CSVファイルを_posts内のファイルに変換するRubyスクリプト群。
+- `access, people, program, session` -
+  一覧などを表示するページのテンプレート。
+  上記_posts内のファイルの情報を使って一覧を出力する。
+- `images, js, css` -
+  各ページから利用される静的な画像、JavaScriptファイル、CSSファイルなど。
+
+**シンポジウム毎に異なる部分：**
+
+- `_data` - YAML形式で、ホテルの地図へのリンク、
+  開催日などを格納したファイル。上記のテンプレートから参照する。
+- `_posts` - セッション、参加者の詳細、地図の情報などを記述したページ群。
+  詳細は後述。
+
+`_layouts`内のレイアウトファイルの関係は
+図{::nomarkdown}\ref{fig:layouts}{:/}
+のようになっている。
+
+{::nomarkdown}
+\begin{figure}[t]
+\centering
+\includegraphics[width=6cm]{figure/layouts.eps}
+\caption{レイアウトファイルの関係}
+\label{fig:layouts}
+\end{figure}
+{:/nomarkdown}
+
+主な役割は以下の通り。defaultは基本的にはそのままでは利用していない。
+
+- **event** - 開始時間、終了時間のあるセッション用テンプレート。
+  時間や場所などの表示を含む。
+- **people** - 参加者の詳細表示のためのテンプレート。
+  Gravatarの表示や関連セッションなどの表示を含む。
+- **post** - 新着情報など向けのテンプレート。
+- **page** - その他のページ用のテンプレート。
+  上部のナビゲーション用のリンクなどを含む。
+
+`_scripts`の中のスクリプトは以下の通り。
+
+- **gensession.rb** セッション詳細CSVファイルから、
+  セッション情報ページを生成する。
+  セッション詳細CSVファイルは`_data`内に格納しておく。
+- **genpeople.rb** 情報処理学会から入手した参加登録情報のCSVファイルから、
+  参加者の詳細ページを生成する。（予定）
+  CSVファイルは`_data`内に格納しておく。
+
+`_posts`の中のファイルは、Jekyllの仕様に基いて
+以下の様なファイル名になっている。
+
+    2014-07-09-opening.html
+
+前半は日付を表すが、ここでは使用していないため任意の日付で良い。
+またフォルダは便宜的なものであり、`_posts`内であれば
+どのファイルをどこに置いても動作に影響はない。
+日付の後ろ側の部分は、種類によって異なる。
+
+セッションの場合は、`session-`に続けて、セッションを表すIDとする。
+参加者の場合は、参加登録番号を付ける。
+場所の情報の場合は、`room-`に続けて場所のIDを付加する。
+
+`_posts`内のファイルは、ファイルの先頭部分にYAML形式でメタデータを記述する。
+これをJekyllではFront-matter[^frontmatter]と呼ぶ。
+
+[^frontmatter]: http://jekyllrb.com/docs/frontmatter/
+
+このテンプレートでは、通常の情報に加えて、以下の情報をFront-matterに
+記載することを想定している。
+
+**セッションファイル**
+
+- `layout: event`
+- `category: session`
+- `title:`にセッション名
+- 開始、終了時間を`start:`, `end:`の後ろに記述する。
+  この情報を元にプログラムのカレンダーが作成される。
+- `pageid:`にセッションのID
+- `tags:`にセッションの種別。一般は`normal`、特別招待講演は`sp`、
+  デモセッションは`ds`、ナイトテクニカルセッションは`ns`と指定する。
+- `location:`に部屋名
+
+この情報を元に、セッション情報をカレンダー表示用のJSONに変換する
+テンプレートは以下のようになる。
+
+> [{% for event in site.categories.session %}
+> {title: "{{ event.title }}", url: "{{ event.url }}", id: "{{ event.pageid }}", start: "{{ event.start }}", end: "{{ event.end }}"}{% unless forloop.last %},{% endunless %}
+> {% endfor %}]
+
+**参加者情報ファイル**
+
+**場所の情報ファイル**
+
+## お気に入り
+
+お気に入りは、HTML5のLocal Storageを使って実現している。
+Local Storageには、以下の様なJSONで
+お気に入り登録したセッションや参加者を格納しており、
+必要に応じて読み書きを行うことで、
+ブラウザを閉じでもお気に入り情報を保持できるようにしている。
+
+> {"4114":"2014-06-09T09:47:41.727Z"}
+
+## 画面表示
+
