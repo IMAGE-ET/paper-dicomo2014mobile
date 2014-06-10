@@ -5,7 +5,8 @@ WebサイトはJekyll[^jekyll]
 jQuery Mobile[^jquerymobile]
 を用いている。
 また、オフライン時のページのキャッシュやお気に入りの保存には
-HTML5[^html5]で規定されたAPIを利用している。
+HTML5[^html5]で規定されたOffline Application Caching APIおよび
+Local Storage APIを利用している。
 
 [^jekyll]: http://jekyllrb.com
 [^jquerymobile]: http://jquerymobile.com/
@@ -45,12 +46,20 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 - `_includes` - 複数のページから利用されるHTMLを部品化したファイル。
 - `_layouts` - ページの種類に応じたレイアウトファイル。
   主に５種類ある。詳細は後述。
-- `_scripts` - CSVファイルを_posts内のファイルに変換するRubyスクリプト群。
+- `_scripts` - CSVファイルを`_posts`内のファイルに変換するRubyスクリプト群。
 - `access, people, program, session` -
   一覧などを表示するページのテンプレート。
-  上記_posts内のファイルの情報を使って一覧を出力する。
+  後述の`_posts`内のファイルの情報を使って一覧を出力する。
 - `images, js, css` -
   各ページから利用される静的な画像、JavaScriptファイル、CSSファイルなど。
+- `pagelist.appcache` -
+  ページキャッシュを行うページのURLのリスト。
+  HTML5のマニフェストファイル[^manifest]の形式。
+  基本的には下記のページ群から自動的に生成するが、
+  独自の画像やJavaScriptファイル、CSSファイルなどがあれば
+  ここに指定する必要がある。
+
+[^manifest]: http://dev.w3.org/html5/offline-webapps/#offline
 
 **シンポジウム毎に異なる部分：**
 
@@ -58,6 +67,8 @@ pushすると、静的HTMLを生成してホスティングするサービスで
   開催日などを格納したファイル。上記のテンプレートから参照する。
 - `_posts` - セッション、参加者の詳細、地図の情報などを記述したページ群。
   詳細は後述。
+- `_config.yaml` - シンポジウム名、屋内地図の画像URLなど
+  シンポジウム固有の情報の定義ファイル。
 
 `_layouts`内のレイアウトファイルの関係は
 図{::nomarkdown}\ref{fig:layouts}{:/}
@@ -115,6 +126,8 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 
 **セッションファイル**
 
+セッションに関連するファイルは、以下のFront-matterの記載が必要である。
+
 - `layout: event`
 - `category: session`
 - `title:`にセッション名
@@ -134,17 +147,56 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 
 **参加者情報ファイル**
 
+参加者に関連するファイルは、以下のFront-matterの記載が必要である。
+
+- `layout: people`
+- `category: people`
+- `title:`に参加者の名前。
+- `pageid:`に参加者登録番号を指定する。
+- `emailhash:`にGravatar用のメールアドレスのMD5ハッシュを指定する。
+- `session:`に関連セッションのURL、セッションタイトル、発表タイトルを
+  リストで指定する。
+
 **場所の情報ファイル**
+
+（未定）
 
 ## お気に入り
 
 お気に入りは、HTML5のLocal Storageを使って実現している。
 Local Storageには、以下の様なJSONで
-お気に入り登録したセッションや参加者を格納しており、
+お気に入り登録したセッションや参加者のIDを格納しており、
 必要に応じて読み書きを行うことで、
-ブラウザを閉じでもお気に入り情報を保持できるようにしている。
+ブラウザを閉じてもお気に入り情報を保持できるようにしている。
 
 > {"4114":"2014-06-09T09:47:41.727Z"}
 
+また、お気に入り指定した項目に星印を付ける仕組みは
+`_includes/favorite-list.html`に、
+お気に入りのフリップボタンの表示は
+`_includes/favorite-button.html`にそれぞれ共通化している。
+
 ## 画面表示
 
+画面表示にはjQuery Mobileを用いており、
+画面要素はWidgetを使って構成している。
+基本は１ページにつき１つのURLを割り当て、
+画面の遷移には、Ajax loading[^ajax]を用いている。
+
+[^ajax]: "HTTP-analogous navigation via Ajax" http://api.jquerymobile.com/pagecontainer/
+
+お気に入り情報の更新などは画面表示時にJavaScriptで行っているが、
+jQuery Mobile 1.4の仕様では、DOMキャッシュなしの場合では、主に
+
+* `pagecreate`
+* `pagecontainershow`
+
+の２つのイベントが発生するのに対して、DOMキャッシュがある場合では、
+`pagecreate`のイベントは発生しない。
+
+つまり、$$a \rightarrow b \rightarrow a$$ と画面遷移した場合、
+１回目の$$a$$と$$b$$では`pagecreate`が発生するが、
+２回目の$$a$$では`pagecreate`は発生しない。
+
+そこで、初期化処理には`pagecontainershow`を利用して、
+現在のページIDをチェックすることで無駄な初期化処理を排除している。

@@ -167,7 +167,18 @@ Onにすることで、参加者一覧上での表示を変えることができ
 同じ参加者の詳細ページを表示させることができる。
 
 またこれと同じQRコードが参加者の参加章にも印刷されている。
-（予定）
+図{::nomarkdown}\ref{fig:qrcode-sample}{:/}
+がそのイメージである。
+
+{::nomarkdown}
+\begin{figure}[t]
+\centering
+\includegraphics[width=7cm]{figure/qrcode-sample.jpeg}
+\caption{QRコード入りの参加章のイメージ}
+\label{fig:qrcode-sample}
+\end{figure}
+{:/nomarkdown}
+
 
 ## Access
 

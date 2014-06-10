@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-06-09 16:24:30 nomura"
+# * Time-stamp: "2014-06-10 11:48:10 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -21,7 +21,8 @@ TARGET=paper
 TEXFILES=src/abstract.tex\
 	src/intro.tex\
 	src/manual.tex\
-	src/architecture.tex
+	src/architecture.tex\
+	src/conclusion.tex
 FIGFILES=figure/access.png\
 	figure/architecture.eps\
 	figure/home.png\
