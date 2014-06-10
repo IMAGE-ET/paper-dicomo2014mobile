@@ -121,6 +121,29 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 
 [^frontmatter]: http://jekyllrb.com/docs/frontmatter/
 
+図{::nomarkdown}\ref{fig:frontmatter}{:/}
+がFront-matterの記述例である。
+
+{::nomarkdown}
+\begin{figure}[t]
+\begin{verbatim}
+---
+category: session
+layout: event
+title: 1A 統一セッション-人間拡張
+pageid: 1a
+tags: normal
+start: '2014-07-09 13:20:00'
+end: '2014-07-09 15:00:00'
+location: 飛天
+---
+\end{verbatim}
+\caption{Front-matterの記述例}
+\label{fig:frontmatter}
+\end{figure}
+{:/nomarkdown}
+
+
 このテンプレートでは、通常の情報に加えて、以下の情報をFront-matterに
 記載することを想定している。
 
@@ -139,11 +162,25 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 - `location:`に部屋名
 
 この情報を元に、セッション情報をカレンダー表示用のJSONに変換する
-テンプレートは以下のようになる。
+テンプレートは図{::nomarkdown}\ref{fig:convjson}{:/}のようになる。
 
-> [{% for event in site.categories.session %}
-> {title: "{{ event.title }}", url: "{{ event.url }}", id: "{{ event.pageid }}", start: "{{ event.start }}", end: "{{ event.end }}"}{% unless forloop.last %},{% endunless %}
-> {% endfor %}]
+{::nomarkdown}
+\begin{figure}[t]
+\begin{verbatim}
+[{% for event in site.categories.session %}
+{
+    title: "{{ event.title }}", url: "{{ event.url }}",
+    id: "{{ event.pageid }}",
+    start: "{{ event.start }}", end: "{{ event.end }}"
+}
+{% unless forloop.last %},{% endunless %}
+{% endfor %}]
+\end{verbatim}
+\caption{Front-matterをJSONに変換するテンプレートの例}
+\label{fig:convjson}
+\end{figure}
+{:/nomarkdown}
+
 
 **参加者情報ファイル**
 
