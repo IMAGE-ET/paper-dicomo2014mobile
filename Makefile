@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-06-10 11:48:10 nomura"
+# * Time-stamp: "2014-06-13 15:47:21 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -66,7 +66,7 @@ $(TARGET).bbl: $(TARGET).tex $(BIBFILES) $(TEXFILES)
 	$(LATEX) $(TARGET).tex
 	bibtex $(TARGET)
 
-#$(TARGET).dvi:	$(TARGET).tex $(TARGET).bbl $(TEXFILES) $(FIGFILES)
-$(TARGET).dvi:	$(TARGET).tex $(TEXFILES) $(FIGFILES)
+$(TARGET).dvi:	$(TARGET).tex $(TARGET).bbl $(TEXFILES) $(FIGFILES)
+#$(TARGET).dvi:	$(TARGET).tex $(TEXFILES) $(FIGFILES)
 	$(LATEX) $(TARGET).tex
 	$(LATEX) $(TARGET).tex
