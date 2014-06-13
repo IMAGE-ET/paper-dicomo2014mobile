@@ -8,9 +8,9 @@ jQuery Mobile[^jquerymobile]
 HTML5[^html5]で規定されたOffline Application Caching APIおよび
 Local Storage APIを利用している。
 
-[^jekyll]: http://jekyllrb.com
-[^jquerymobile]: http://jquerymobile.com/
-[^html5]: http://www.w3.org/TR/html5/
+[^jekyll]: <http://jekyllrb.com>
+[^jquerymobile]: <http://jquerymobile.com/>
+[^html5]: <http://www.w3.org/TR/html5/>
 
 全体の構成は図
 {::nomarkdown}\ref{fig:architecture}{:/}
@@ -35,7 +35,7 @@ GitHub Pages[^pages]
 GitHub Pagesは、Jekyllに対応したコンテンツをGitHub上のGitリポジトリに
 pushすると、静的HTMLを生成してホスティングするサービスである。
 
-[^pages]: https://pages.github.com
+[^pages]: <https://pages.github.com>
 
 ## リポジトリ
 
@@ -59,7 +59,7 @@ pushすると、静的HTMLを生成してホスティングするサービスで
   独自の画像やJavaScriptファイル、CSSファイルなどがあれば
   ここに指定する必要がある。
 
-[^manifest]: http://dev.w3.org/html5/offline-webapps/#offline
+[^manifest]: <http://dev.w3.org/html5/offline-webapps/#offline>
 
 **シンポジウム毎に異なる部分：**
 
@@ -129,7 +129,7 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 `_posts`内のファイルは、ファイルの先頭部分にYAML形式でメタデータを記述する。
 これをJekyllではFront-matter[^frontmatter]と呼ぶ。
 
-[^frontmatter]: http://jekyllrb.com/docs/frontmatter/
+[^frontmatter]: <http://jekyllrb.com/docs/frontmatter/>
 
 図{::nomarkdown}\ref{fig:frontmatter}{:/}
 がFront-matterの記述例である。
@@ -239,9 +239,9 @@ Local Storageには、以下の様なJSONで
 画面表示にはjQuery Mobileを用いており、
 画面要素はWidgetを使って構成している。
 基本は１ページにつき１つのURLを割り当て、
-画面の遷移には、Ajax loading[^ajax]を用いている。
+画面の遷移には、Ajax Loading[^ajax]を用いている。
 
-[^ajax]: "HTTP-analogous navigation via Ajax" http://api.jquerymobile.com/pagecontainer/
+[^ajax]: HTTP-analogous navigation via Ajax <http://api.jquerymobile.com/pagecontainer/>
 
 お気に入り情報の更新などは画面表示時にJavaScriptで行っているが、
 jQuery Mobile 1.4の仕様では、DOMキャッシュなしの場合では、主に

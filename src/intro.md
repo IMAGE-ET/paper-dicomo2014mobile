@@ -34,7 +34,7 @@ HTML5のページキャッシュ機能を利用することで、オフライン
 今回作成したサイトのテンプレートは、GitHub[^dicomogithub]にて
 オープンソース提供する予定である。
 
-[^dicomogithub]: https://github.com/dicomo2014
+[^dicomogithub]: <https://github.com/dicomo2014>
 
 利用者の反応については、シンポジウム終了後にまとめる予定である。
 
@@ -62,8 +62,8 @@ HTML5のページキャッシュ機能を利用することで、オフライン
 専用アプリの例としては、IEEE CLOUD2013のアプリ[^ieeecloud]や
 Google I/Oアプリ[^googleio]などが挙げられる。
 
-[^ieeecloud]: http://www.thecloudcomputing.org/
-[^googleio]: https://www.google.com/events/io
+[^ieeecloud]: <http://www.thecloudcomputing.org/>
+[^googleio]: <https://www.google.com/events/io>
 
 一方Webアプリの場合、ブラウザの起動が必要だが、
 アプリの配布などは不要で異なるOS上で利用することができる。

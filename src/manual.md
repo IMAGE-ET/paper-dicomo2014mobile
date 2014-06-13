@@ -142,7 +142,7 @@ Onにすることで、参加者一覧上での表示を変えることができ
 参加者のメールアドレスでGravatar[^gravatar]アイコンが登録されていれば、
 名前の前に表示される。
 
-[^gravatar]: https://www.gravatar.com/
+[^gravatar]: <https://www.gravatar.com/>
 
 参加登録時に自己紹介を入力していれば、その内容が参加者の詳細として
 表示される。
