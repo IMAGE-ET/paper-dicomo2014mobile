@@ -30,12 +30,10 @@ Local Storage APIを利用している。
 ユーザのスマート端末からはこの静的HTMLをダウンロードし表示する。
 
 DICOMO2014では、コンテンツ変換、静的HTMLのホスティングの手間を軽減するため、
-GitHub Pages[^pages]
-を用いた。{::nomarkdown}\cite{pages}{:/}
+GitHub Pages{::nomarkdown}\cite{pages}{:/}
+を用いた。
 GitHub Pagesは、Jekyllに対応したコンテンツをGitHub上のGitリポジトリに
 pushすると、静的HTMLを生成してホスティングするサービスである。
-
-[^pages]: <https://pages.github.com>
 
 ## リポジトリ
 
