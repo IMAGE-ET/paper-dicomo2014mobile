@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-07-17 19:22:07 nomura"
+# * Time-stamp: "2014-07-17 19:33:43 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -21,7 +21,8 @@ TARGET=paper
 MDFILES=$(wildcard src/*.md)
 TEXFILES=$(MDFILES:.md=.tex)
 FIGFILES=$(wildcard figure/*.eps)\
-	$(wildcard figure/*.png)
+	$(wildcard figure/*.png)\
+	$(wildcard figure/*.jpeg)
 BIBFILES=$(wildcard *.bib)
 MD2TEX=cmd /c kramdown -o latex
 PRECONV=sed -e 's/\[cite:\([^]]\+\)\]/{::nomarkdown}\\cite{\1}{:\/}/g'\
@@ -45,6 +46,7 @@ all:\
 clean:
 	rm -vf src/*.tex
 	rm -vf src/*.aux
+	rm -vf figure/*.xbb
 	rm -vf *.aux
 	rm -vf *.dvi
 	rm -vf *.out
