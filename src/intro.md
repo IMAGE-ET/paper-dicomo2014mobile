@@ -1,6 +1,6 @@
 # はじめに
 
-DICOMO{::nomarkdown}\cite{dicomo}{:/}
+DICOMO[cite:dicomo]
 では年に１回、モバイルと分散環境などをテーマとした
 シンポジウムを開催している。
 シンポジウムには毎回約400名以上の参加者が集まり、
@@ -47,16 +47,16 @@ HTML5のページキャッシュ機能を利用することで、オフライン
 ほうが望ましい。
 
 西村らによる人工知能学会でのシステム提供の例
-{::nomarkdown}\cite{nishimura2003}{:/}{::nomarkdown}\cite{numa2006}{:/}や
+[cite:nishimura2003][cite:numa2006]や
 松村らによるLinked Dataを用いた学術会議支援システムの例
-{::nomarkdown}\cite{matsumura2013}{:/}があるが、
+[cite:matsumura2013]があるが、
 会場のネットワークは常に利用できるとは限らないため
 ネットワークが接続していないオフライン状態でも動作するのが望ましい。
 
 一般的には専用アプリとWebアプリの２種類の実現方法がある。
 
 専用アプリの場合、操作性を向上させることができるが、
-異なるOSに対応しようとすると、Cordova{::nomarkdown}\cite{cordova}{:/}などを使えば
+異なるOSに対応しようとすると、Cordova[cite:cordova]などを使えば
 アプリそのもののクロスプラットフォーム化は可能だがアプリの配布などは
 それぞれ別個に行う必要がある。
 専用アプリの例としては、IEEE CLOUD2013のアプリ[^ieeecloud]や

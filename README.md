@@ -1,7 +1,7 @@
 LaTeX論文用テンプレート
 =======================
 
-* Time-stamp: "2014-03-25 17:46:13 nomura"
+* Time-stamp: "2014-07-17 19:27:17 nomura"
 
 ## 概要
 
@@ -32,10 +32,7 @@ kramdownをインストールします。
 Makefileを以下のように変更します。
 
 - TARGET: メインになるTeXファイルのファイル名
-- TEXFILES: includeするTeXファイル。同じフォルダに同名の`.md`ファイルを
-  置いておくと、texに変換します。
-- FIGFILES: texファイルから参照している図表ファイル
-- BIBFILES: 参考文献ファイル
 
-あとはメインになるTeXファイル（ここではpaper.tex）を編集して
+あとはメインになるTeXファイル（ここではpaper.tex）を編集して、
+inputするファイルをsrc以下に`.md`ファイルとして用意して、
 makeを実行してください。

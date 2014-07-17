@@ -12,8 +12,7 @@ Local Storage APIを利用している。
 [^jquerymobile]: <http://jquerymobile.com/>
 [^html5]: <http://www.w3.org/TR/html5/>
 
-全体の構成は図
-{::nomarkdown}\ref{fig:architecture}{:/}
+全体の構成は図[fig:architecture]
 の通りである。
 
 {::nomarkdown}
@@ -30,7 +29,7 @@ Local Storage APIを利用している。
 ユーザのスマート端末からはこの静的HTMLをダウンロードし表示する。
 
 DICOMO2014では、コンテンツ変換、静的HTMLのホスティングの手間を軽減するため、
-GitHub Pages{::nomarkdown}\cite{pages}{:/}
+GitHub Pages[cite:pages]
 を用いた。
 GitHub Pagesは、Jekyllに対応したコンテンツをGitHub上のGitリポジトリに
 pushすると、静的HTMLを生成してホスティングするサービスである。
@@ -69,7 +68,7 @@ pushすると、静的HTMLを生成してホスティングするサービスで
   シンポジウム固有の情報の定義ファイル。
 
 `_layouts`内のレイアウトファイルの関係は
-図{::nomarkdown}\ref{fig:layouts}{:/}
+図[fig:layouts]
 のようになっている。
 
 {::nomarkdown}
@@ -129,7 +128,7 @@ pushすると、静的HTMLを生成してホスティングするサービスで
 
 [^frontmatter]: <http://jekyllrb.com/docs/frontmatter/>
 
-図{::nomarkdown}\ref{fig:frontmatter}{:/}
+図[fig:frontmatter]
 がFront-matterの記述例である。
 
 {::nomarkdown}
@@ -174,7 +173,7 @@ location: 飛天
 - `paper:` 発表される論文のリスト。
 
 この情報を元に、セッション情報をカレンダー表示用のJSONに変換する
-テンプレートは図{::nomarkdown}\ref{fig:convjson}{:/}のようになる。
+テンプレートは図[fig:convjson]のようになる。
 
 {::nomarkdown}
 \begin{figure}[t]

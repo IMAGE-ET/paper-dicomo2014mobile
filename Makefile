@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-06-16 22:13:21 nomura"
+# * Time-stamp: "2014-07-17 19:22:07 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -18,32 +18,23 @@
 .SUFFIXES: .tex .md .pdf .bib .dvi .bib
 
 TARGET=paper
-TEXFILES=src/abstract.tex\
-	src/intro.tex\
-	src/manual.tex\
-	src/architecture.tex\
-	src/conclusion.tex
-FIGFILES=figure/access.png\
-	figure/architecture.eps\
-	figure/home.png\
-	figure/layouts.eps\
-	figure/people.png\
-	figure/people-sample.png\
-	figure/program.png\
-	figure/qrcode.png\
-	figure/sessions.png\
-	figure/session-sample.png
-BIBFILES=biblist.bib
+MDFILES=$(wildcard src/*.md)
+TEXFILES=$(MDFILES:.md=.tex)
+FIGFILES=$(wildcard figure/*.eps)\
+	$(wildcard figure/*.png)
+BIBFILES=$(wildcard *.bib)
 MD2TEX=cmd /c kramdown -o latex
-CONVPUNC=sed -i -e 's/、/，/g' -e 's/。/．/g'
+PRECONV=sed -e 's/\[cite:\([^]]\+\)\]/{::nomarkdown}\\cite{\1}{:\/}/g'\
+	-e 's/\[fig:\([^]]\+\)\]/{::nomarkdown}\\ref{fig:\1}{:\/}/g'\
+	-e 's/\[table:\([^]]\+\)\]/{::nomarkdown}\\ref{table:\1}{:\/}/g'\
+	-e 's/、/，/g' -e 's/。/．/g'
 DVI2PDF=dvipdfmx -l
 LATEX=uplatex -shell-escape
 BIBTEX=upbibtex
 
 .md.tex:
-	$(MD2TEX) $< > $@
+	$(PRECONV) $< | $(MD2TEX) > $@
 	if [ ! -s $@ ]; then rm -fv $@ && false; fi
-	$(CONVPUNC) $@
 
 .dvi.pdf:
 	$(DVI2PDF) $*

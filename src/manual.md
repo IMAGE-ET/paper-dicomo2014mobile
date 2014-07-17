@@ -1,6 +1,6 @@
 # 利用方法
 
-図{::nomarkdown}\ref{fig:home}{:/}が
+図[fig:home]が
 ホーム画面である。
 
 {::nomarkdown}
@@ -10,7 +10,7 @@
 \caption{ホーム画面}
 \label{fig:home}
 \end{figure}
-{:/nomarkdown}
+{:/}
 
 ホーム画面には各種リンクと新着情報が記載されており、
 項目をタップすることで各情報にアクセスすることができる。
@@ -33,8 +33,7 @@ HTML5のページキャッシュ機能を利用してセッションや参加者
 
 ## Program
 
-図{::nomarkdown}\ref{fig:program}{:/}
-がプログラムの画面である。
+図[fig:program]がプログラムの画面である。
 
 {::nomarkdown}
 \begin{figure}[t]
@@ -54,8 +53,7 @@ HTML5のページキャッシュ機能を利用してセッションや参加者
 
 ## Session
 
-図{::nomarkdown}\ref{fig:sessions}{:/}
-がセッションの一覧画面である。
+図[fig:sessions]がセッションの一覧画面である。
 
 {::nomarkdown}
 \begin{figure}[t]
@@ -74,8 +72,7 @@ HTML5のページキャッシュ機能を利用してセッションや参加者
 また、上部の入力欄にキーワードを入力すると、
 そのキーワードをタイトルに含むセッションが絞り込まれて表示される。
 
-図{::nomarkdown}\ref{fig:session-sample}{:/}
-が詳細なセッション情報の例である。
+図[fig:session-sample]が詳細なセッション情報の例である。
 
 {::nomarkdown}
 \begin{figure}[t]
@@ -104,8 +101,7 @@ Webへのアブストラクト公開に同意していればアブストラク�
 ## People
 
 Peopleを選択すると、参加者の一覧が表示される。
-図{::nomarkdown}\ref{fig:people}{:/}
-が参加者一覧の例である。
+図[fig:people]が参加者一覧の例である。
 ただし、お名前の掲載に同意しておらず、論文の著者や座長ではない参加者は
 表示されない。
 
@@ -124,7 +120,7 @@ Peopleを選択すると、参加者の一覧が表示される。
 また、上部の入力欄に文字を入力すると、
 その文字を含む参加者が絞り込まれて表示される。
 
-図{::nomarkdown}\ref{fig:people-sample}{:/}
+図[fig:people-sample]
 が参加者の詳細情報の例である。
 
 {::nomarkdown}
@@ -153,7 +149,7 @@ Onにすることで、参加者一覧上での表示を変えることができ
 
 右上のOptionボタンをタップし、QRコード表示リンクをタップすると、
 参加者の詳細ページのURLを含むQRコードを表示させることができる。
-図{::nomarkdown}\ref{fig:qrcode}{:/}
+図[fig:qrcode]
 がQRコードを表示した画面の例である。
 
 {::nomarkdown}
@@ -169,7 +165,7 @@ Onにすることで、参加者一覧上での表示を変えることができ
 同じ参加者の詳細ページを共有することができる。
 
 またこれと同じQRコードが参加者の参加章にも印刷されている。
-図{::nomarkdown}\ref{fig:qrcode-sample}{:/}
+図[fig:qrcode-sample]
 がそのイメージである。
 
 {::nomarkdown}
@@ -186,7 +182,7 @@ Onにすることで、参加者一覧上での表示を変えることができ
 Accessリンクをタップすると、
 会場となるホテルの地図へのリンク、
 および会場内の地図へのリンクが表示される。
-図{::nomarkdown}\ref{fig:access}{:/}
+図[fig:access]
 がアクセスの画面の例である。
 
 {::nomarkdown}
