@@ -1,6 +1,6 @@
 # Makefile for paper with Markdown
 #
-# * Time-stamp: "2014-07-17 19:33:43 nomura"
+# * Time-stamp: "2015-02-12 20:25:03 nomura"
 #
 # requires:
 # * Cygwin texlive packages
@@ -29,7 +29,7 @@ PRECONV=sed -e 's/\[cite:\([^]]\+\)\]/{::nomarkdown}\\cite{\1}{:\/}/g'\
 	-e 's/\[fig:\([^]]\+\)\]/{::nomarkdown}\\ref{fig:\1}{:\/}/g'\
 	-e 's/\[table:\([^]]\+\)\]/{::nomarkdown}\\ref{table:\1}{:\/}/g'\
 	-e 's/、/，/g' -e 's/。/．/g'
-DVI2PDF=dvipdfmx -l
+DVI2PDF=dvipdfmx
 LATEX=uplatex -shell-escape
 BIBTEX=upbibtex
 
